@@ -1,0 +1,18 @@
+<h2>DashBoard</h2>
+
+<h3>Ecco cosa puoi fare</h3>
+<ul>
+  <li>Profilo utente</li>
+  <li><a [routerLink]="['/news']">News</a></li>
+  <li>Elenco Titoli in borsa</li>
+  <li><a href="javascript:void(0)" (click)="logout()">Logout</a></li>
+</ul>
+
+<!--
+C'e ancora un problema... 
+nonostante tramite il token nel localStorage riusciamo a capire se sono autenticato e voglio continuare a navigare, se io riesco a copiare l'URL di ingresso (compreso il token --  http://localhost:4200/dashboard/<token>   ) riesco comunque ad entrare ... ahi ahi ahi
+allora bisogna proteggerci da questo "furto di URL" 
+
+Il prossimo argomento da approfondire saranno le GUARDS di angular
+
+-->
