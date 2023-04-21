@@ -1,1 +1,29 @@
-<h2>News</h2>
+<h2> Lista News</h2>
+<div class="form-group">
+    <label for="search">Filtra news:</label>
+    <input type="text" class="form-control" id="search" [(ngModel)]="searchText" name="searchText">
+  <!-- Eliminato bottone, pipe sulla generazione della tabella -->
+</div>
+  
+<hr>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titolo</th>
+        <th scope="col">Descrizione</th>
+        <th scope="col">Data</th>
+        <th scope="col">Autore</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let n of news | newsFilter: searchText">
+        <th scope="row">{{ n.id }}</th>
+        <td>{{ n.titolo }}</td>
+        <td>{{ n.descrizione }}</td>
+        <td>{{ n.data }}</td>
+        <td>{{ n.autore }}</td>
+      </tr>
+    
+    </tbody>
+  </table>

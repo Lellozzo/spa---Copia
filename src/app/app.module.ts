@@ -16,6 +16,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RegioniComponent } from './regioni/regioni.component';
 import { RegioneComponent } from './regione/regione.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewsFilterPipe } from './news-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NotFoundComponent,
     RegioniComponent,
     RegioneComponent,
-    DashboardComponent
+    DashboardComponent,
+    NewsFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [NewsFilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
