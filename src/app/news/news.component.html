@@ -1,29 +1,101 @@
-<h2> Lista News</h2>
+<h2>Lista News</h2>
 <div class="form-group">
-    <label for="search">Filtra news:</label>
-    <input type="text" class="form-control" id="search" [(ngModel)]="searchText" name="searchText">
+  <label for="search">Filtra news:</label>
+  <input
+    type="text"
+    class="form-control"
+    id="search"
+    [(ngModel)]="searchText"
+    name="searchText"
+  />
   <!-- Eliminato bottone, pipe sulla generazione della tabella -->
+  <button
+    class="btn btn-outline-secondary"
+    type="button"
+    (click)="appareForm()"
+  >
+    <i class="fas fa-plus"></i>
+  </button>
+  <span>Aggiungi News</span>
 </div>
-  
-<hr>
+<div class="card mb-3" *ngIf="showForm">
+  <div class="card-header">Aggiungi News</div>
+  <div class="card-body">
+    <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="titolo">Titolo:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="titolo"
+          formControlName="titolo"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="descrizione">Descrizione:</label>
+        <textarea
+          class="form-control"
+          id="descrizione"
+          formControlName="descrizione"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="data">Data:</label>
+        <input
+          type="date"
+          class="form-control"
+          id="data"
+          formControlName="data"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="autore">Autore:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="autore"
+          formControlName="autore"
+          required
+        />
+      </div>
+      <div class="form-group form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="inHome"
+          formControlName="inHome"
+        />
+        <label class="form-check-label" for="inHome">In Home</label>
+      </div>
+      <button type="submit" class="btn btn-primary mr-2">Aggiungi</button>
+      <button type="button" class="btn btn-secondary" (click)="chiudeForm()">
+        Annulla
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr />
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Titolo</th>
-        <th scope="col">Descrizione</th>
-        <th scope="col">Data</th>
-        <th scope="col">Autore</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let n of news | newsFilter: searchText">
-        <th scope="row">{{ n.id }}</th>
-        <td>{{ n.titolo }}</td>
-        <td>{{ n.descrizione }}</td>
-        <td>{{ n.data }}</td>
-        <td>{{ n.autore }}</td>
-      </tr>
-    
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titolo</th>
+      <th scope="col">Descrizione</th>
+      <th scope="col">Data</th>
+      <th scope="col">Autore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let n of news | newsFilter : searchText">
+      <th scope="row">{{ n.id }}</th>
+      <td>{{ n.titolo }}</td>
+      <td>{{ n.descrizione }}</td>
+      <td>{{ n.data }}</td>
+      <td>{{ n.autore }}</td>
+    </tr>
+  </tbody>
+</table>

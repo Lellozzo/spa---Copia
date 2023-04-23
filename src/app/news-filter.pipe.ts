@@ -12,9 +12,9 @@ export class NewsFilterPipe implements PipeTransform {
     }
 
     return newsFiltred.filter(news => {
-      return news.titolo.includes(searchText) ||
-      news.descrizione.includes(searchText) ||
-      news.autore.includes(searchText);
+      return news.titolo.toLowerCase().includes(searchText.toLowerCase()) ||
+      news.descrizione.toLowerCase().includes(searchText.toLowerCase()) ||
+      news.autore.toLowerCase().includes(searchText.toLowerCase());
     })
   }
 
